@@ -1,3 +1,4 @@
+import javafx.scene.image.Image;
 import logic.PersonaException;
 import logic.entities.AggressionType;
 import logic.entities.Persona;
@@ -28,15 +29,15 @@ public class MainSaceneTest {
     @BeforeAll
     static void setUp() throws IOException, ClassNotFoundException, PersonaException {
         pp = new PersonaServices();
-        p1 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.POLICE);
-        p11 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.POLICE);
-        p2 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_CON_ARMAS, Side.POLICE);
-        p3 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_SEXUAL, Side.POLICE);
-        p4 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
-        p5 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_CON_ARMAS, Side.CIVILIAN);
-        p6 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN);
-        p7 = new Persona("Diego", "Prieto", 150, true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN);
-        p8 = new Persona("Diego", "Prieto", -150, true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN);
+        p1 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.POLICE,new Image("C:\\Users\\sebas\\OneDrive\\Escritorio\\Proyecto\\GUEVARA_LACOUTURE_ROMERO_PROYECTO_FINAL-master\\Images\\guest.png"));
+        p11 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.POLICE,new Image("C:\\Users\\sebas\\OneDrive\\Escritorio\\Proyecto\\GUEVARA_LACOUTURE_ROMERO_PROYECTO_FINAL-master\\Images\\guest.png"));
+        p2 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_CON_ARMAS, Side.POLICE, new Image("C:\\Users\\sebas\\OneDrive\\Escritorio\\Proyecto\\GUEVARA_LACOUTURE_ROMERO_PROYECTO_FINAL-master\\Images\\guest.png"));
+        p3 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_SEXUAL, Side.POLICE, new Image("C:\\Users\\sebas\\OneDrive\\Escritorio\\Proyecto\\GUEVARA_LACOUTURE_ROMERO_PROYECTO_FINAL-master\\Images\\guest.png"));
+        p4 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN, new Image("C:\\Users\\sebas\\OneDrive\\Escritorio\\Proyecto\\GUEVARA_LACOUTURE_ROMERO_PROYECTO_FINAL-master\\Images\\guest.png"));
+        p5 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_CON_ARMAS, Side.CIVILIAN, new Image("C:\\Users\\sebas\\OneDrive\\Escritorio\\Proyecto\\GUEVARA_LACOUTURE_ROMERO_PROYECTO_FINAL-master\\Images\\guest.png"));
+        p6 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN, new Image("C:\\Users\\sebas\\OneDrive\\Escritorio\\Proyecto\\GUEVARA_LACOUTURE_ROMERO_PROYECTO_FINAL-master\\Images\\guest.png"));
+        p7 = new Persona("Diego", "Prieto", 150, true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN, new Image("C:\\Users\\sebas\\OneDrive\\Escritorio\\Proyecto\\GUEVARA_LACOUTURE_ROMERO_PROYECTO_FINAL-master\\Images\\guest.png"));
+        p8 = new Persona("Diego", "Prieto", -150, true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN, new Image("C:\\Users\\sebas\\OneDrive\\Escritorio\\Proyecto\\GUEVARA_LACOUTURE_ROMERO_PROYECTO_FINAL-master\\Images\\guest.png"));
 
 
     }

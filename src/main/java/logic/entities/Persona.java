@@ -1,5 +1,6 @@
 package logic.entities;
 
+import javafx.scene.image.Image;
 import logic.PersonaException;
 
 import java.io.Serializable;
@@ -16,9 +17,10 @@ public class Persona extends Exportable implements Serializable {
     private Enum aggressionType;
     private Enum side;
     private String full;
+    private Image profile;
 
 
-    public Persona(String name, String lastName, int age, boolean isVictim, Enum aggressionType, Enum side) throws PersonaException {
+    public Persona(String name, String lastName, int age, boolean isVictim, Enum aggressionType, Enum side,Image profile) throws PersonaException {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
@@ -26,6 +28,11 @@ public class Persona extends Exportable implements Serializable {
         this.aggressionType = aggressionType;
         this.side = side;
         this.full = this.name + " " + this.lastName;
+        this.profile = profile;
+    }
+
+    public Image getProfile() {
+        return profile;
     }
 
     public String getName() {

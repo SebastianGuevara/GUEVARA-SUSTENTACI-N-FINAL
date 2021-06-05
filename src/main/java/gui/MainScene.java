@@ -125,12 +125,13 @@ public class MainScene extends Application {
     private GridPane gp;
     private FileChooser fileChooserImg;
     private File fileImg;
+    private Image image4;
 
 
     {
         try {
-            mia = new Persona("Mia","Lacouture",18,true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
-            sebas = new Persona("Sebastian","Guevara",19,false, AggressionType.VIOLENCIA_SEXUAL, Side.POLICE);
+            mia = new Persona("Mia","Lacouture",18,true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN,image);
+            sebas = new Persona("Sebastian","Guevara",19,false, AggressionType.VIOLENCIA_SEXUAL, Side.POLICE,image);
         } catch (PersonaException e) {
             e.printStackTrace();
         }
@@ -169,6 +170,26 @@ public class MainScene extends Application {
 
         personasTable.setItems((ObservableList<Persona>) this.personaServices.getAll());
 
+        changeImage = new Button("Seleccione la imagen");
+
+        changeImage.setOnAction(e->{
+            fileChooserImg = new FileChooser();
+            fileChooserImg.setTitle("Seleccione la foto de la persona");
+            fileImg = fileChooserImg.showOpenDialog(stage);
+            if (fileImg==null)
+            {
+                System.out.println("No file");
+            }
+            else
+            {
+                try {
+                    image4 = new Image(new FileInputStream(fileImg));
+                    imv.setImage(image4);
+                } catch (FileNotFoundException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                }
+            }
+        });
         addPersona.setOnAction(e ->
         {
             boolean victim = false;
@@ -188,13 +209,12 @@ public class MainScene extends Application {
             if (side.getSelectionModel().getSelectedItem().equals("MANIFESTANTE"))
                 sideType = Side.CIVILIAN;
 
-
-
             try {
+
                 int age = Integer.parseInt(ageInput.getText());
                 if (age < 0) throw new PersonaException(PersonaException.BAD_AGE_LOWER);
                 if (age > 120) throw new PersonaException(PersonaException.BAD_AGE_UPPER);
-                Persona p = new Persona(nameInput.getText(),lastNameInput.getText(),age,victim,aggressionType,sideType);
+                Persona p = new Persona(nameInput.getText(),lastNameInput.getText(),age,victim,aggressionType,sideType,image4);
                 this.personaServices.insert(p);
                 nameInput.clear();
                 lastNameInput.clear();
@@ -224,6 +244,8 @@ public class MainScene extends Application {
             mViolenciaConArmasNumber.setText(String.valueOf(personaServices.getmViolenciaConArmas().size()));
             mViolenciaHomicidaNumber.setText(String.valueOf(personaServices.getmViolenciaHomicida().size()));
             mViolenciaSexualNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()));
+
+            imv.setImage(image);
         });
 
         selectPersona.setOnAction(e ->
@@ -237,6 +259,8 @@ public class MainScene extends Application {
                 isVictim1="SI";
             victimInfo.setText("Es victima?: "+isVictim1);
             aggressionInfo.setText("Tipo de agresion: "+ personasTable.getSelectionModel().getSelectedItem().getAggressionType());
+            imv.setImage(personasTable.getSelectionModel().getSelectedItem().getProfile());
+
 
         });
 
@@ -325,26 +349,7 @@ public class MainScene extends Application {
                 }
             }
         });
-        changeImage = new Button("Seleccione la imagen");
 
-        changeImage.setOnAction(e->{
-            fileChooserImg = new FileChooser();
-            fileChooserImg.setTitle("Seleccione la foto de la persona");
-            fileImg = fileChooserImg.showOpenDialog(stage);
-            if (fileImg==null)
-            {
-                System.out.println("No file");
-            }
-            else
-            {
-                try {
-                    Image image4 = new Image(new FileInputStream(fileImg));
-                    imv.setImage(image4);
-                } catch (FileNotFoundException fileNotFoundException) {
-                    fileNotFoundException.printStackTrace();
-                }
-            }
-        });
 
     }
     private void setUp()

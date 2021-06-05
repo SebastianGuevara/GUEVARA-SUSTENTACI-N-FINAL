@@ -2,6 +2,7 @@ package logic.services.impl;
 
 import javafx.collections.FXCollections;
 
+import javafx.scene.image.Image;
 import logic.PersonaException;
 import logic.entities.AggressionType;
 import logic.entities.Exportable;
@@ -103,20 +104,20 @@ public class PersonaServices implements IPersonaServices {
 
     @Override
     public List<Persona> importPersonas(File file) throws Exception {
-            List<Persona> importedPersonas = new ArrayList<>();
-            List<String> read = this.personaPersistence.importPersonas(file);
+        List<Persona> importedPersonas = new ArrayList<>();
+        List<String> read = this.personaPersistence.importPersonas(file);
 
-            System.out.println(read.size());
+        System.out.println(read.size());
 
-            for (String line : read) {
-                String[] tokens = line.split(Exportable.CSV.toString());
-                Persona persona = new Persona(tokens[0], tokens[1], Integer.parseInt(tokens[2]), Boolean.parseBoolean(tokens[3]), AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
-                importedPersonas.add(persona);
-                this.insert(persona);
-            }
+        for (String line : read) {
+            String[] tokens = line.split(Exportable.CSV.toString());
+            Persona persona = new Persona(tokens[0], tokens[1], Integer.parseInt(tokens[2]), Boolean.parseBoolean(tokens[3]), AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN, new Image("C:\\Users\\sebas\\OneDrive\\Escritorio\\Proyecto\\GUEVARA_LACOUTURE_ROMERO_PROYECTO_FINAL-master\\Images\\guest.png"));
+            importedPersonas.add(persona);
+            this.insert(persona);
+        }
 
 
-            return importedPersonas;
+        return importedPersonas;
 
     }
 
@@ -125,7 +126,7 @@ public class PersonaServices implements IPersonaServices {
 
         Persona pee = null;
         try {
-            pee = new Persona(name,lastName,age,isVictim,aggressionType,side);
+            pee = new Persona(name,lastName,age,isVictim,aggressionType,side,new Image("C:\\Users\\sebas\\OneDrive\\Escritorio\\Proyecto\\GUEVARA_LACOUTURE_ROMERO_PROYECTO_FINAL-master\\Images\\guest.png"));
         } catch (PersonaException e) {
             e.printStackTrace();
         }
